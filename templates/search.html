@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodFinder - Results</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="center-container">
+        <h1>FoodFinder</h1>
+        <p class="subline">Search results for "{{ query }}"</p>
+        <div class="recipe-list">
+            {% for recipe in recipes %}
+            <div class="recipe-card">
+                <h3>{{ recipe.name }}</h3>
+                <p><strong>Description:</strong> {{ recipe.description }}</p>
+                <p><strong>Ingredients:</strong> {{ recipe.ingredients | join(", ") }}</p>
+                <p><strong>Time:</strong> {{ recipe.time }}</p>
+                <p><strong>Instructions:</strong> <pre>{{ recipe.instructions }}</pre></p>
+                <iframe width="560" height="315" src="{{ recipe.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
